@@ -21,5 +21,7 @@ implementation
 
 {$R *.dfm}
 
+#test abcd
+
 end.
  
