@@ -1,0 +1,19 @@
+name: Build App1
+
+on:
+  push:
+    paths:
+      - 'app1/**'   # Khi có thay đổi trong thư mục app1
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted  # hoặc 'windows-latest' nếu dùng runner cloud
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Delphi App1
+        run: |
+          cd app1
+          call "D:\setup\Borland\Delphi7\Bin\DCC32.EXE" App1.dpr
