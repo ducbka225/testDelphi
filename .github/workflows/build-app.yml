@@ -14,6 +14,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build Delphi App1
+        shell: cmd
         run: |
           cd app1
           call "D:\setup\Borland\Delphi7\Bin\DCC32.EXE" Project1.dpr
