@@ -16,4 +16,4 @@ jobs:
       - name: Build Delphi App1
         run: |
           cd app1
-          call "D:\setup\Borland\Delphi7\Bin\DCC32.EXE" App1.dpr
+          call "D:\setup\Borland\Delphi7\Bin\DCC32.EXE" Project1.dpr
