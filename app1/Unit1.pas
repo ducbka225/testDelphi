@@ -21,7 +21,7 @@ implementation
 
 {$R *.dfm}
 
-#test abcd
+#test abcd l?n 2
 
 end.
  
