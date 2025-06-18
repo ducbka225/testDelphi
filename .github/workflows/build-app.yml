@@ -17,4 +17,4 @@ jobs:
         shell: cmd
         run: |
           cd app1
-          call "D:\setup\Borland\Delphi7\Bin\DCC32.EXE" Project1.dpr
+          "D:\setup\Borland\Delphi7\Bin\DCC32.EXE" Project1.dpr
