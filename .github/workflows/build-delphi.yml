@@ -11,10 +11,10 @@ jobs:
     runs-on: self-hosted 
 
     steps:
-      - name: Checkout code
+      - name: Checkout-code
         uses: actions/checkout@v4
       
-      - name: Detect changed project
+      - name: Detect-changed-project
         id: detect
         shell: pwsh
         run: |
@@ -29,7 +29,7 @@ jobs:
           $projects = $projects | Sort-Object -Unique
           echo "projects=$($projects -join ',')" >> $env:GITHUB_OUTPUT
 
-      - name: Build changed projects
+      - name: Build-changed-projects
         if: steps.detect.outputs.projects != ''
         shell: cmd
         run: |
