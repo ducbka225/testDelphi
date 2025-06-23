@@ -16,7 +16,7 @@ jobs:
       
       - name: Detect-changed-project
         id: detect
-        shell: pwsh
+        shell: cmd
         run: |
           $diff = git diff --name-only $env:GITHUB_EVENT_BEFORE $env:GITHUB_SHA
           $projects = @()
