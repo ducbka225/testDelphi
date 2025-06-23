@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  detect-and-build::
+  detect-and-build:
     runs-on: self-hosted 
 
     steps:
