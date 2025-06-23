@@ -9,9 +9,7 @@ uses
 type
   TForm1 = class(TForm)
   private
-    { Private éŒ¾ }
   public
-    { Public éŒ¾ }
   end;
 
 var
@@ -21,7 +19,6 @@ implementation
 
 {$R *.dfm}
 
-#fdsfsdfs
 
 
 end.
