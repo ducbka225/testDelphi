@@ -1,0 +1,41 @@
+name: Build App1
+
+on:
+  push:
+    paths:
+      - 'sc/**'   # Khi có thay đổi trong thư mục sc
+  workflow_dispatch:
+
+jobs:
+  detect-and-build:
+    runs-on: self-hosted 
+
+    steps:
+      - name: Checkout-code
+        uses: actions/checkout@v4
+      
+      - name: Detect-changed-project
+        id: detect
+        shell: powershell
+        run: |
+          $diff = git diff --name-only $env:GITHUB_EVENT_BEFORE $env:GITHUB_SHA
+          $projects = @()
+          foreach ($file in $diff) {
+            if ($file -like 'sc/project1/*') { $projects += 'project1' }
+            elseif ($file -like 'sc/project2/*') { $projects += 'project2' }
+            elseif ($file -like 'sc/project3/*') { $projects += 'project3' }
+            elseif ($file -like 'sc/common/*') { $projects += 'project1','project2','project3' }
+          }
+          $projects = $projects | Sort-Object -Unique
+          echo "projects=$($projects -join ',')" >> $env:GITHUB_OUTPUT
+
+      - name: Build-changed-projects
+        if: steps.detect.outputs.projects != ''
+        shell: cmd
+        run: |
+          for %%p in (%{{ steps.detect.outputs.projects }}%) do (
+            echo Building %%p...
+            cd sc\%%p
+            "C:\Program Files (x86)\Borland\Delphi7\Bin\dcc32.exe" %%p.dpr
+            cd ..\..
+          )
